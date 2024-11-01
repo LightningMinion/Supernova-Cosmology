@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+sn_name, sn_z, sn_mag, sn_mag_err =  np.loadtxt("sn_data_nearby.txt", dtype="str", unpack = True)
+sn_z = np.array(sn_z, dtype=np.float32)
+sn_mag = np.array(sn_mag, dtype=np.float32)
+sn_mag_err = np.array(sn_mag_err, dtype=np.float32)
+plt.figure(1)
+plt.errorbar(sn_z, sn_mag, yerr=sn_mag_err, marker = "x", linestyle = 'None', color = "red", label = "nearby SN")
+sn_name, sn_z, sn_mag, sn_mag_err =  np.loadtxt("sn_data_distant.txt", dtype="str", unpack = True)
+sn_z = np.array(sn_z, dtype=np.float32)
+sn_mag = np.array(sn_mag, dtype=np.float32)
+sn_mag_err = np.array(sn_mag_err, dtype=np.float32)
+plt.errorbar(sn_z, sn_mag, yerr=sn_mag_err, marker = "x", linestyle = 'None', color = "blue", label = "distant SN")
+plt.xlabel("redshift")
+plt.ylabel("effective magnitude")
+plt.legend()
+plt.title("The effective magnitudes of extragalactic supernovae (SN) as a function of redshift")
+plt.show()
